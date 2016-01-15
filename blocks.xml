@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blocks>
+<!-- ... -->
+<!-- =================================================================== -->
+<!-- ===== 7DTDMod -->
+<!-- ===== Отредактированные исходные записи -->
+<!-- =================================================================== -->
+  <block id="5" name="radiated">
+    <property name="Extends" value="dirt" />  
+    <property name="Texture" value="181" />
+    <property name="CanMobsSpawnOn" value="false" />
+    <property name="CanPlayersSpawnOn" value="false" />
+	<property name="BuffsWhenWalkedOn" value="irradiation1"/>
+	<!--
+	<property name="ActiveRadiusEffects" value="+radiation(3)"/>
+	-->
+  </block>
+<!-- =========================================== -->
+  <block id="309" name="campfire">
+    <property name="Class" value="Campfire" />
+    <property name="Material" value="coal" />
+    <property name="Shape" value="ModelEntity" />
+	<!-- <property name="Shape" value="Ext3dModel" /> -->
+    <!-- <property name="Mesh" value="models" /> -->
+    <!-- <property name="Model" value="Crafting/campfire" param1="main_mesh" /> -->
+	<property name="Model" value="Entities/Crafting/campfirePrefab" />
+    <property name="IsTerrainDecoration" value="true" />
+    <property name="ParticleName" value="campfire" />
+    <property name="ParticleOffset" value="0.5,0,0.5" />
+	<!--
+	particleeffects/p_signal_flareprefab
+    <property name="ParticleName" value="campfire" />
+    <property name="ParticleOffset" value="0.5,0,0.5" />
+	-->
+	<property name="HeatMapStrength" value="2"/>
+	<property name="HeatMapTime" value="1200"/>
+	<property name="HeatMapFrequency" value="25"/>
+	<property name="BuffsWhenWalkedOn" value="burningSmall"/>
+	<property name="ActiveRadiusEffects" value="+heatSource(3)"/>
+    <drop event="Destroy" count="0" />
+    <property name="Group" value="Food/Cooking,Basics" />
+    <drop event="Destroy" name="[recipe]" count="1" />	
+	<property class="Workstation">
+		<property name="Modules" value="tools,output,fuel,input"/>
+	</property>
+	<property name="DescriptionKey" value="campfireDesc"/>
+  </block>
+<!-- =========================================== -->
+  <block id="414" name="steelWall">
+    <property name="Material" value="steel" />
+    <property name="Texture" value="355,355,356,356,356,356" />
+    <property name="DowngradeBlock" value="concreteReinforced" />
+    <property class="RepairItems">
+		<property name="forgedSteel" value="10" />	
+	</property>	
+    <drop event="Destroy" name="scrapIron" count="2,4" prob="1" />    
+    <drop event="Fall" name="scrapMetalPile" count="1" prob="1.0"  stick_chance="1" />
+    <property name="CanMobsSpawnOn" value="false" />
+  </block>
+<!-- =================================================================== -->
+<!-- ===== 7DTDMod -->
+<!-- =================================================================== -->
+  <block id="1560" name="Workbench">
+    <property name="Material" value="wood" />
+    <property name="Shape" value="New" />
+    <property name="Model" value="table" />
+    <property name="Texture" value="241" />
+    <property name="Class" value="Campfire" />
+	<property name="ActiveRadiusEffects" value="+heatSource(1)"/>
+    <property class="Workstation">
+      <property name="Modules" value="tools,output,input"/>
+    </property>
+    <drop event="Destroy" name="woodDebris" count="1" />
+    <drop event="Fall" name="woodDebris" count="1" prob="1.0" stick_chance=".75" />
+	<property name="Group" value="DM" />
+    <property name="CustomIcon" value="tableWood" />
+    <property name="CanMobsSpawnOn" value="false" />
+  </block>
+<!-- =========================================== -->
+ <block id="1561" name="DMPowerWall">
+    <property name="Class" value="Damage" />
+    <property name="Damage" value="99" />
+	<property name="Damage_received" value="2" />
+	<property name="Material" value="DM_PowerWall" />
+    <property name="PlaceEverywhere" value="true" />
+    <property name="Place" value="TowardsPlacer" />
+	<property name="MultiBlockDim" value="1,5,1" />
+	<property name="Collide" value="movement,rocket,sight,melee" />
+    <property name="Mesh" value="transparent" />
+    <property name="Texture" value="355,355,285,285,285,285" />
+    <!--
+	<property name="Shape" value="New" />
+    <property name="Model" value="Pole1m" />
+    <property name="Model" value="Pole0.5m" />
+    <property name="Texture" value="356" />
+	
+    <property name="Shape" value="PlateCentered" />
+    <property name="Mesh" value="transparent" />
+    <property name="Texture" value="285" />
+	
+    <property name="Texture" value="355,355,356,356,356,356" />
+	-->
+    <!--<property name="Mesh" value="opaque2" /> -->
+	<!--property name="DontDamageOnTouch" value="true" /-->
+    <!--property name="IsTerrainDecoration" value="true"   DOES NOT WORK ON THIS SHAPE!!! -->
+	<property class="RepairItems">
+		<property name="DMWood1" value="1" />	
+	</property>
+    <drop event="Destroy" name="scrapIron" count="1" />    
+    <drop event="Fall" name="scrapIron" count="1" prob="1.0"  stick_chance=".75" />
+    <property name="IsDeveloper" value="true" />
+	<property name="Group" value="DM" />
+    <property name="CustomIcon" value="DMPowerWall" />
+    <property name="CanMobsSpawnOn" value="false" />
+    <property name="Map.Color" value="20,20,120" />
+  </block>
+<!-- =========================================== -->
+  <block id="1562" name="DMsteelWall">
+    <property name="Material" value="DM_Steel" />
+    <property name="Texture" value="355,355,356,356,356,356" />
+    <property class="RepairItems">
+		<property name="forgedSteel" value="10" />	
+	</property>	
+    <drop event="Destroy" name="scrapIron" count="2,4" prob="1" />
+    <property name="IsDeveloper" value="true" />
+	<property name="Group" value="DM" />
+    <property name="CustomIcon" value="steelWall" />
+    <property name="CanMobsSpawnOn" value="false" />
+    <property name="Map.Color" value="20,20,120" />
+  </block>
+<!-- =========================================== -->
+  <block id="1563" name="DMPowerWallPillar">
+    <property name="Material" value="DM_Steel" />
+	<property name="Shape" value="New" />
+    <property name="Model" value="Pole1m" />	
+    <property name="Texture" value="356" />
+    <drop event="Destroy" name="scrapIron" count="1,2" prob="1" />
+	<property name="CanMobsSpawnOn" value="false" />
+	<property class="RepairItems">
+		<property name="forgedSteel" value="10" />	
+	</property>
+    <property name="IsDeveloper" value="true" />
+	<property name="Group" value="DM" />
+    <property name="CustomIcon" value="steelPillar" />
+    <property name="CanMobsSpawnOn" value="false" />
+    <property name="Map.Color" value="20,20,120" />
+  </block>
+<!-- =========================================== -->
+  <block id="1564" name="DMPowerWallBarrier">
+    <property name="Class" value="Damage" />
+    <property name="Damage" value="99" />
+	<property name="Damage_received" value="2" />
+	<property name="Material" value="DM_PowerWall" />
+    <property name="PlaceEverywhere" value="true" />
+    <property name="Place" value="TowardsPlacer" />
+	<property name="MultiBlockDim" value="1,1,1" />
+    <property name="Shape" value="PlateCentered" />
+    <property name="Mesh" value="transparent" />
+    <property name="Texture" value="285" />
+	<property name="Collide" value="movement,rocket,sight,melee" />
+	<property class="RepairItems">
+		<property name="DMWood1" value="1" />	
+	</property>
+    <drop event="Destroy" count="0" />
+    <property name="IsDeveloper" value="true" />
+	<property name="Group" value="DM" />
+    <property name="CustomIcon" value="steelBarrier" />
+    <property name="CanMobsSpawnOn" value="false" />
+    <property name="Map.Color" value="20,20,120" />
+  </block>
+<!-- =========================================== -->
+  <block id="1565" name="DMAutoSteelWall">
+    <property name="Class" value="PlantGrowing" />
+    <property name="Material" value="DM_PowerWall" />
+    <property name="Texture" value="355,355,356,356,356,356" />
+	<property name="Collide" value="movement,rocket,sight,melee" />
+    <property name="IsTerrainDecoration" value="true" />
+	<property class="RepairItems">
+		<property name="DMWood1" value="1" />	
+	</property>
+    <property class="PlantGrowing">
+      <property name="FertileLevel" value="0" />
+      <property name="Next" value="DMsteelWall" />
+      <property name="GrowthRate" value=".01" />
+      <property name="LightLevelStay" value="0" />
+      <property name="IsRandom" value="false" />
+      <property name="IsGrowOnTopEnabled" value="true" />
+      <property name="GrowOnTop" value="DMAutoSteelWall" param1="5" param2="DMsteelWall" />
+    </property>
+	<property name="Group" value="DM" />
+    <property name="CustomIcon" value="steelWall" />
+    <property name="IsDeveloper" value="true" />
+    <property name="CanMobsSpawnOn" value="false" />
+    <property name="Map.Color" value="20,20,120" />
+  </block>
+<!-- =========================================== -->
+  <block id="1566" name="GasifierGenerator">
+    <property name="Material" value="metal" />
+    <property name="Shape" value="Ext3dModel" />
+    <property name="Mesh" value="models" />
+    <property name="Model" value="Appliances/ac_unit" param1="main_mesh" />
+    <property name="Class" value="Campfire" />
+	<property name="ActiveRadiusEffects" value="+heatSource(15)"/>
+	<!--
+	<property name="ActiveRadiusEffects" value="+radiation(3)"/>
+	-->
+    <property class="Workstation,Building,Basics">
+      <property name="Modules" value="output,input"/>
+    </property>
+    <drop event="Destroy" name="woodDebris" count="1" />
+    <drop event="Fall" name="woodDebris" count="1" prob="1.0" stick_chance=".75" />
+	<drop event="Harvest" name="shortMetalPipe" count="4" tool_category="Disassemble" /> 
+	<drop event="Harvest" name="scrapIron" count="2" tool_category="Disassemble" />
+	<property name="Group" value="DM" />
+    <property name="CustomIcon" value="airConditioner" />
+    <property name="CanMobsSpawnOn" value="false" />
+  </block>
+<!-- =========================================== -->
+  <block id="1567" name="miniReactor">
+    <property name="Material" value="metal" />
+    <property name="Shape" value="Ext3dModel" />
+    <property name="Mesh" value="models" />
+    <property name="Model" value="Appliances/ac_unit" param1="main_mesh" />
+    <property name="Class" value="Campfire" />
+	<property name="ActiveRadiusEffects" value="+heatSource(30)"/>
+	<!--
+	<property name="ActiveRadiusEffects" value="+radiation(3)"/>
+	<property name="ActiveRadiusEffects" value="+heatSource(15)"/>
+	-->
+    <property class="Workstation,Building,Basics">
+      <property name="Modules" value="output,input"/>
+    </property>
+    <drop event="Destroy" name="woodDebris" count="1" />
+    <drop event="Fall" name="woodDebris" count="1" prob="1.0" stick_chance=".75" />
+	<drop event="Harvest" name="shortMetalPipe" count="4" tool_category="Disassemble" /> 
+	<drop event="Harvest" name="scrapIron" count="2" tool_category="Disassemble" />
+	<property name="Group" value="DM" />
+    <property name="CustomIcon" value="airConditioner" />
+    <property name="CanMobsSpawnOn" value="false" />
+  </block>
+<!-- =========================================== -->
+  <block id="1568" name="AutoWall_Cobblestone">
+    <property name="Class" value="PlantGrowing" />
+    <property name="CustomIcon" value="cobblestone" />
+    <property name="Material" value="concrete" />
+    <property name="Texture" value="26" />
+    <property name="IsTerrainDecoration" value="true" />
+    <property class="PlantGrowing">
+      <property name="FertileLevel" value="0" />
+      <property name="Next" value="cobblestone" />
+      <property name="GrowthRate" value=".01" />
+      <property name="LightLevelStay" value="0" />
+      <property name="IsRandom" value="false" />
+      <property name="IsGrowOnTopEnabled" value="true" />
+      <property name="GrowOnTop" value="AutoWall_Cobblestone" param1="5" param2="cobblestone" />
+    </property>
+  </block>
+<!-- =========================================== -->
+  <block id="1569" name="AutoWall_Steel">
+    <property name="Class" value="PlantGrowing" />
+    <property name="CustomIcon" value="steelWall" />
+    <property name="Material" value="steel" />
+    <property name="Texture" value="355,355,356,356,356,356" />
+    <property name="IsTerrainDecoration" value="true" />
+    <property class="PlantGrowing">
+      <property name="FertileLevel" value="0" />
+      <property name="Next" value="steelWall" />
+      <property name="GrowthRate" value=".01" />
+      <property name="LightLevelStay" value="0" />
+      <property name="IsRandom" value="false" />
+      <property name="IsGrowOnTopEnabled" value="true" />
+      <property name="GrowOnTop" value="AutoWall_Steel" param1="5" param2="steelWall" />
+    </property>
+  </block>
+<!-- =========================================== -->
+<!--
+-->
+<!-- =================================================================== -->
+<!-- ===== Источники света -->
+<!-- =================================================================== -->
+  <block id="1690" name="Street_Light">
+    <property name="Class" value="Deadgrass" />
+        <property name="CustomIcon" value="streetLight01" />
+    <property name="Place" value="TowardsPlacer90" />
+    <drop event="Destroy" count="1" />
+    <property name="CanPickup" value="true" />
+    <property name="Material" value="metal" />
+    <property name="Shape" value="ModelEntity" />
+    <property name="Texture" value="241" />
+    <property name="Collide" value="bullet,melee" />
+    <property name="Model" value="Entities/Lighting/street_light01Prefab" />
+    <drop event="Fall" name="scrapMetalPile" count="1" prob="1.0"  stick_chance=".75" />
+  </block>
+<!-- =========================================== -->
+        <block id="1691" name="Rural_Porch_Light">
+    <property name="Class" value="Deadgrass" />
+        <property name="CustomIcon" value="porchLight01" />
+    <property name="Place" value="TowardsPlacer90" />
+    <drop event="Destroy" count="1" />
+    <property name="CanPickup" value="true" />
+    <property name="Material" value="metal_thin" />
+    <property name="Shape" value="ModelEntity" />
+    <property name="Texture" value="241" />
+    <property name="Light" value="0.5" />
+    <property name="Collide" value="bullet,melee" />
+    <property name="Model" value="Entities/Lighting/porchLight01Prefab" />
+  </block>
+<!-- =========================================== -->
+        <block id="1692" name="Porch_Light_Brass">
+    <property name="Class" value="Deadgrass" />
+        <property name="CustomIcon" value="porchLight04Brass" />
+    <property name="Place" value="TowardsPlacer90" />
+    <drop event="Destroy" count="1" />
+    <property name="CanPickup" value="true" />
+    <property name="Material" value="metal_thin" />
+    <property name="Shape" value="ModelEntity" />
+    <property name="Texture" value="241" />
+    <property name="Light" value="0.5" />
+    <property name="Collide" value="bullet,melee" />
+    <property name="Model" value="Entities/Lighting/porchLight04BrassPrefab" />
+  </block>
+<!-- =========================================== -->
+        <block id="1693" name="Porch_Light">
+    <property name="Class" value="Deadgrass" />
+        <property name="CustomIcon" value="porchLight04" />
+    <property name="Place" value="TowardsPlacer90" />
+    <property name="Material" value="metal_thin" />
+    <property name="Shape" value="ModelEntity" />
+    <property name="Texture" value="241" />
+    <property name="Collide" value="bullet,melee" />
+    <property name="Model" value="Entities/Lighting/porchLight04Prefab" />
+    <drop event="Destroy" count="1" />
+    <property name="CanPickup" value="true" />
+  </block>
+<!-- =========================================== -->
+        <block id="1694" name="Ceiling_Light_3">
+    <property name="Class" value="Deadgrass" />
+        <property name="CustomIcon" value="ceilingLight01" />
+    <property name="Place" value="TowardsPlacer90" />
+    <drop event="Destroy" count="1" />
+    <property name="CanPickup" value="true" />
+    <property name="Material" value="glass" />
+    <property name="Shape" value="ModelEntity" />
+    <property name="Texture" value="241" />
+    <property name="Light" value="0.5" />
+    <property name="Collide" value="bullet,melee" />
+    <property name="Model" value="Entities/Lighting/ceilingLight01Prefab" />
+  </block>
+<!-- =========================================== -->
+        <block id="1695" name="Ceiling_Light_Dome">
+    <property name="Class" value="Deadgrass" />
+        <property name="CustomIcon" value="ceilingLight02" />
+    <property name="Place" value="TowardsPlacer90" />
+    <drop event="Destroy" count="1" />
+    <property name="CanPickup" value="true" />
+    <property name="Material" value="metal_thin" />
+    <property name="Shape" value="ModelEntity" />
+    <property name="Texture" value="241" />
+    <property name="Light" value="0.5" />
+    <property name="Collide" value="bullet,melee" />
+    <property name="Model" value="Entities/Lighting/ceilingLight02Prefab" />
+  </block>
+<!-- =========================================== -->
+        <block id="1696" name="Ceiling_Light_Dome_Brass">
+    <property name="Class" value="Deadgrass" />
+        <property name="CustomIcon" value="ceilingLight02Brass" />
+    <property name="Place" value="TowardsPlacer90" />
+    <drop event="Destroy" count="1" />
+    <property name="CanPickup" value="true" />
+    <property name="Material" value="metal_thin" />
+    <property name="Shape" value="ModelEntity" />
+    <property name="Texture" value="241" />
+    <property name="Light" value="0.5" />
+    <property name="Collide" value="bullet,melee" />
+    <property name="Model" value="Entities/Lighting/ceilingLight02BrassPrefab" />
+  </block>
+<!-- =========================================== -->
+        <block id="1697" name="Ceiling_Light">
+    <property name="Class" value="Deadgrass" />
+        <property name="CustomIcon" value="ceilingLight04" />
+    <property name="Place" value="TowardsPlacer90" />
+    <drop event="Destroy" count="1" />
+    <property name="CanPickup" value="true" />
+    <property name="Material" value="metal_thin" />
+    <property name="Shape" value="ModelEntity" />
+    <property name="Texture" value="241" />
+    <property name="Light" value="0.5" />
+    <property name="Collide" value="bullet,melee" />
+    <property name="Model" value="Entities/Lighting/ceilingLight04Prefab" />
+  </block>
+<!-- =========================================== -->
+        <block id="1698" name="Ceiling_Light_2">
+    <property name="Class" value="Deadgrass" />
+        <property name="CustomIcon" value="ceilingLight05" />
+    <property name="Place" value="TowardsPlacer90" />
+    <drop event="Destroy" count="1" />
+    <property name="CanPickup" value="true" />
+    <property name="Material" value="metal_thin" />
+    <property name="Shape" value="ModelEntity" />
+    <property name="Texture" value="241" />
+    <property name="Light" value="0.5" />
+    <property name="Collide" value="bullet,melee" />
+    <property name="Model" value="Entities/Lighting/ceilingLight05Prefab" />
+  </block>
+<!-- =========================================== -->
+        <block id="1699" name="Ceiling_Light_Brass">
+    <property name="Class" value="Deadgrass" />
+        <property name="CustomIcon" value="ceilingLight05Brass" />
+    <property name="Place" value="TowardsPlacer90" />
+    <drop event="Destroy" count="1" />
+    <property name="CanPickup" value="true" />
+    <property name="Material" value="metal_thin" />
+    <property name="Shape" value="ModelEntity" />
+    <property name="Texture" value="241" />
+    <property name="Light" value="0.5" />
+    <property name="Collide" value="bullet,melee" />
+    <property name="Model" value="Entities/Lighting/ceilingLight05BrassPrefab" />
+  </block>
+<!-- =========================================== -->
+        <block id="1700" name="Wall_Light">
+    <property name="Class" value="Deadgrass" />
+        <property name="CustomIcon" value="wallLight01" />
+        <property name="Place" value="TowardsPlacerInverted" />
+    <drop event="Destroy" count="1" />
+    <property name="CanPickup" value="true" />
+    <property name="Material" value="metal_thin" />
+    <property name="Shape" value="ModelEntity" />
+    <property name="Texture" value="241" />
+    <property name="Light" value="0.5" />
+    <property name="Collide" value="bullet,melee" />
+    <property name="Model" value="Entities/Lighting/wall_light01Prefab" />
+  </block>
+<!-- =========================================== -->
+        <block id="1701" name="Ceiling_Light_Bar">
+    <property name="Class" value="Deadgrass" />
+        <property name="CustomIcon" value="ceilingLight07" />
+    <property name="Place" value="TowardsPlacer90" />
+    <drop event="Destroy" count="1" />
+    <property name="CanPickup" value="true" />
+    <property name="Material" value="metal_thin" />
+    <property name="Shape" value="ModelEntity" />
+    <property name="Texture" value="241" />
+    <property name="Light" value="0.5" />
+    <property name="Collide" value="bullet,melee" />
+    <property name="Model" value="Entities/Lighting/ceilingLight07Prefab" />
+  </block>  
+<!-- =========================================== -->
+        <block id="1702" name="Table_Lamp">
+        <property name="CustomIcon" value="endTableLamp" />
+    <property name="Class" value="Particle" />
+    <property name="Material" value="furniture" />
+    <property name="Shape" value="Ext3dModel" />
+    <property name="Mesh" value="models" />
+    <property name="Model" value="Furniture/end_table_lamp" param1="main_mesh" />
+    <property name="FuelValue" value="32" />
+        <property name="ParticleName" value="candleWall_flame" />
+        <property name="ParticleOffset" value="0.5,1.6,0.48" />
+    <property name="Light" value="15" />
+    <property name="Group" value="Decor" />
+    <drop event="Destroy" name="Table Lamp" count="1" prob="1" />
+  </block>
+<!-- =========================================== -->
+        <block id="1703" name="Light_Barrel">
+<!-- <property name="CustomIcon" value="oilBarrel" /> -->
+<property name="CanPickup" value="true" />
+<property name="Class" value="Particle" />
+<property name="Material" value="metal" />
+<property name="Shape" value="Ext3dModel" />
+<property name="Mesh" value="models" />
+<property name="Model" value="Industrial/barrel01" param1="main_mesh" />
+<property name="ParticleName" value="campfire" />
+<property name="ParticleOffset" value="0.53,1.04,0.45" />
+<drop event="Destroy" name="scrapIron" count="8" prob="1" />
+        </block>
+<!-- =========================================== -->
+        <block id="1704" name="White_Pole">
+<property name="CustomIcon" value="adobeWhitePole" />
+<property name="Material" value="wood+wood" />
+<property name="Shape" value="Pole" />
+<property name="Texture" value="245" />
+<drop event="Destroy" count="0" />
+<property name="Group" value="Building" />
+   <drop event="Fall" count="0"/>    
+        </block>
+<!-- =========================================== -->
+        <block id="1705" name="White_Pole_Light">
+<property name="Class" value="Particle" />
+<property name="Light" value="2.5" />
+<!--<property name="CustomIcon" value="adobeWhitePole" /> -->
+<property name="Material" value="wood+wood" />
+<property name="Shape" value="Pole" />
+<property name="Texture" value="245" />
+<property name="ParticleName" value="torch_wall" />
+<property name="ParticleOffset" value="0.125,0.97,0.125" />
+<drop event="Destroy" count="0" />
+<property name="Group" value="Building" />
+   <drop event="Fall" count="0"/>    
+        </block>
+<!-- =========================================== -->
+        <block id="1706" name="Pole_Light">
+<!--<property name="CustomIcon" value="poleBlockOldWood" /> -->
+<property name="Class" value="Particle" />
+<property name="Light" value="2.5" />
+<property name="Material" value="wood+wood" />
+<property name="Shape" value="Pole" />
+<property name="Texture" value="241" />
+<property name="ParticleName" value="torch_wall" />
+<property name="ParticleOffset" value="0.125,0.97,0.125" />
+<drop event="Destroy" count="0" />
+<property name="Group" value="Building" />
+   <drop event="Fall" count="0"/>    
+  </block>
+<!-- =========================================== -->
+        <block id="1707" name="Industrial_Light">
+        <property name="CustomIcon" value="industrialLight01" />
+    <property name="Class" value="Deadgrass" />
+    <property name="Material" value="metal_thin" />
+    <property name="Shape" value="ModelEntity" />
+    <property name="Texture" value="241" />
+    <property name="Light" value="0.5" />
+    <property name="Collide" value="bullet,melee" />
+    <property name="Model" value="Entities/Lighting/industrialLight01Prefab" />
+        <property name="Place" value="TowardsPlacerInverted" />
+    <drop event="Destroy" name="ironFragment" count="1" prob="1" />
+    <property name="CanPickup" value="true" />
+  </block>
+<!-- =========================================== -->
+	
+</blocks>
